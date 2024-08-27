@@ -1,4 +1,6 @@
 import type { Preview } from "@storybook/react";
+import { themes } from "@storybook/theming";
+import "../src/app/globals.css";
 
 const preview: Preview = {
   parameters: {
@@ -8,9 +10,14 @@ const preview: Preview = {
         date: /Date$/i,
       },
     },
+    docs: {
+      theme: themes.dark,
+    },
+    darkMode: {
+      current: "dark",
+    },
   },
-
-  tags: ["autodocs"]
+  tags: ["autodocs"],
 };
 
 export default preview;
