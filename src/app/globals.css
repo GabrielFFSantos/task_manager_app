@@ -4,6 +4,7 @@
   --warning-color: #e5383b;
   --blocked-color: #dee2e6;
   --text-color: #f8f9fa;
+  --default-radius: 5px;
 }
 
 * {
