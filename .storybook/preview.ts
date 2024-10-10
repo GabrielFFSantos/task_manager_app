@@ -1,6 +1,7 @@
 import type { Preview } from "@storybook/react";
 import { themes } from "@storybook/theming";
 import "../src/app/globals.css";
+import { RouterContext } from "next/dist/shared/lib/router-context.shared-runtime";
 
 const preview: Preview = {
   parameters: {
@@ -15,6 +16,9 @@ const preview: Preview = {
     },
     darkMode: {
       current: "dark",
+    },
+    nextRouter: {
+      Provider: RouterContext.Provider,
     },
   },
   tags: ["autodocs"],

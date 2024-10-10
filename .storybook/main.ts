@@ -11,6 +11,7 @@ const config: StorybookConfig = {
     "@chromatic-com/storybook",
     "@storybook/addon-actions",
     "@storybook/addon-links",
+    "storybook-addon-next-router",
   ],
 
   framework: {
