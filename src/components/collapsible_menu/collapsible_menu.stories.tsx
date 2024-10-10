@@ -4,7 +4,7 @@ import CollapsibleMenu, { CollapsibleMenuProps } from "./index";
 //Declaração de "coleção ou principal"
 
 export default {
-  title: "Global/Collapsible-Menu",
+  title: "Global/Header/Collapsible-Menu",
   component: CollapsibleMenu,
 } as Meta<CollapsibleMenuProps>;
 
