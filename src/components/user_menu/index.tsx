@@ -3,14 +3,12 @@ import React, { useState } from "react";
 import styles from "./styles.module.css";
 import Image from "next/image";
 import UserIcon from "../../../public/images/user.svg";
-import { useRouter } from "next/navigation";
 import { logOut } from "src/helpers/auth";
 
 export type UserMenuProps = {};
 
 const UserMenu = () => {
   const [dropdownOpen, setDropdownOpen] = useState<boolean>(false);
-  const router = useRouter();
 
   const handleDropdownToggle = () => {
     setDropdownOpen(!dropdownOpen);
@@ -18,7 +16,11 @@ const UserMenu = () => {
 
   const handleLogout = async () => {
     await logOut();
-    router.push("/auth");
+    window.location.href = "/auth";
+  };
+
+  const handleProfileRedirect = () => {
+    window.location.href = "/profile";
   };
 
   return (
@@ -30,7 +32,7 @@ const UserMenu = () => {
         >
           <ul>
             <li>
-              <a href="/profile">Profile</a>
+              <a onClick={handleProfileRedirect}>Profile</a>
             </li>
             <li>
               <a href="/settings">Settings</a>
@@ -42,7 +44,11 @@ const UserMenu = () => {
         </div>
       )}
       {dropdownOpen && (
-        <div className={styles.backdrop} onClick={handleDropdownToggle} />
+        <div
+          className={styles.backdrop}
+          onClick={handleDropdownToggle}
+          data-testid="backdrop"
+        />
       )}
     </div>
   );
