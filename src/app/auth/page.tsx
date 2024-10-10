@@ -3,6 +3,10 @@ import Input from "src/components/input";
 import styles from "./styles.module.css";
 import { SubmitHandler, useForm } from "react-hook-form";
 import Button from "src/components/button";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { auth } from "firebaseConfig";
 
 type FormValues = {
   mail: string;
@@ -15,8 +19,18 @@ export default function AuthPage() {
     handleSubmit,
     formState: { errors },
   } = useForm<FormValues>();
+  const [authError, setAuthError] = useState<string | null>(null);
+  const router = useRouter();
 
-  const onSubmit: SubmitHandler<FormValues> = async (data: any) => {};
+  const onSubmit: SubmitHandler<FormValues> = async (data) => {
+    try {
+      await signInWithEmailAndPassword(auth, data.mail, data.password);
+      router.push("/dashboard"); // Redireciona para o dashboard após login bem-sucedido
+    } catch (error: any) {
+      setAuthError("Erro ao fazer login. Verifique suas credenciais.");
+    }
+  };
+
   return (
     <main className={`${styles.container}`}>
       <section className={`${styles.form_section}`}>
@@ -30,7 +44,7 @@ export default function AuthPage() {
             type="email"
             placeholder="Email"
             className={`${styles.login_input}`}
-            // register={register}
+            register={register}
             error={errors.mail?.message}
           />
           <Input
@@ -38,13 +52,14 @@ export default function AuthPage() {
             type="password"
             placeholder="Senha"
             className={`${styles.login_input}`}
-            // register={register}
+            register={register}
             error={errors.password?.message}
           />
+          {authError && <p className={styles.error_message}>{authError}</p>}
           <div className={`${styles.links_container}`}>
             <p className={`${styles.form_links}`}>
               Não tenho conta? {""}
-              <a href="recuperar-senha">Registrar-se</a>
+              <a href="cadastrar-se">Cadastrar-se</a>
             </p>
             <a href="recuperar-senha" className={`${styles.form_links}`}>
               Esqueci minha senha
