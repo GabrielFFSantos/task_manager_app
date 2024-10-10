@@ -5,7 +5,7 @@ import { UseFormRegister } from "react-hook-form";
 export type InputProps = React.InputHTMLAttributes<HTMLInputElement> & {
   name: string;
   label?: string;
-  // register: UseFormRegister<any>;
+  register: UseFormRegister<any>;
   error?: any;
   color?: "primary" | "secondary" | "warning" | "blocked";
   size?: "small" | "medium" | "large";
@@ -15,7 +15,7 @@ const Input: React.FC<InputProps> = ({
   name,
   label,
   error,
-  // register,
+  register,
   color = "primary",
   size = "medium",
   ...props
@@ -26,7 +26,7 @@ const Input: React.FC<InputProps> = ({
       <input
         id={name}
         className={`${styles[color]} ${styles[size]}`}
-        // {...register(name)}
+        {...register(name)}
         {...props}
       />
       {error}

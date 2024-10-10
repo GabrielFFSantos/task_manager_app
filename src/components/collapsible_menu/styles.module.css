@@ -8,8 +8,19 @@
 
 .menu_container {
   position: relative;
-  background-color: var(--secondary-color);
+  background-color: var(--primary-color);
   height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu_container p {
+  color: var(--secondary-color);
+  text-align: justify;
+  padding: 0 10px;
+  width: 60px;
+  word-break: break-all;
 }
 
 .children_container {

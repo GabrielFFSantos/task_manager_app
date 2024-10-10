@@ -1,0 +1,41 @@
+/* styles.module.css */
+
+.container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 100vh;
+  background-color: var(--primary-color);
+}
+
+.form_section {
+  width: 100%;
+  padding: 20px;
+  border-radius: var(--default-radius);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  max-width: 300px;
+}
+
+.register_form {
+  width: 100%;
+  gap: 10px;
+  padding-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.register_input {
+  border: 1px solid var(--primary-color);
+  padding: 5px;
+  width: 100%;
+  border-radius: var(--default-radius);
+}
+
+.error_message {
+  color: var(--warning-color);
+  margin-bottom: 1rem;
+  font-size: 10px;
+}
